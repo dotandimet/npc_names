@@ -298,13 +298,13 @@ function get_names(count=5) {
   const girls = shuffle(girl_names).slice(0, count)
   const family = shuffle(surnames).slice(0, (count*2)+1);
 
-  for (const name of boys.concat(girls)) {
-    const surname = family.shift()
-    console.log(`${name} ${surname}`)
-  }
+  let output = {}
+  output['boys'] = boys.map( (name) => `${name} ${family.shift()}` )
+  output['girls'] = girls.map( (name) => `${name} ${family.shift()}` )
+  return output
 }
 
-get_names(10)
+export default get_names;
 
 // Sources:
 // https://names.mongabay.com/most_common_surnames.htm

@@ -3,10 +3,56 @@
 <head>
 <meta charset="utf-8" />
 <title>NPC random name generator</title>
-<script src="names.js"></script>
+<style>
+.names {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 32rem;
+}
+
+.boys, .girls {
+  border: double #666666 1px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px #333333;
+}
+
+.boys li, .girls li {
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 10px;
+}
+
+.boys {
+  background-color: #accdff;
+}
+.girls {
+  background-color: #ffaccd;
+}
+</style>
+<script type="module">
+  import get_names from "./names.js"
+  function append_names(el, tag, names) {
+    for (let person of names) {
+      const np = document.createElement(tag)
+      np.textContent = person
+      el.appendChild(np)
+    }
+  }
+  let paragraph = document.querySelector('p')
+  window.addEventListener('load', (e) => {
+    const names = get_names(5)
+    append_names(document.querySelector('ol.boys'), 'li', names['boys'])
+    append_names(document.querySelector('ol.girls'), 'li', names['girls'])
+   })
+  console.log('what?')
+</script>
 </head>
 <body>
 <h1>NPC name generator (Modern, American)</h1>
-<p>Look at the console for now</p>
+<div class="names">
+<ol class="boys"></ol>
+<ol class="girls"></ol>
+</div>
 </body>
 </html>
