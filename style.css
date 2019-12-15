@@ -1,0 +1,26 @@
+.names {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 32rem;
+}
+
+.boys, .girls {
+  border: double #666666 1px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px #333333;
+}
+
+.boys li, .girls li {
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 10px;
+}
+
+.boys {
+  background-color: #accdff;
+}
+.girls {
+  background-color: #ffaccd;
+}
+

@@ -3,33 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>NPC random name generator</title>
-<style>
-.names {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: stretch;
-  width: 32rem;
-}
-
-.boys, .girls {
-  border: double #666666 1px;
-  border-radius: 5px;
-  box-shadow: 10px 5px 5px #333333;
-}
-
-.boys li, .girls li {
-  padding: 10px 10px 0px 10px;
-  margin-bottom: 10px;
-}
-
-.boys {
-  background-color: #accdff;
-}
-.girls {
-  background-color: #ffaccd;
-}
-</style>
+<link href="style.css" rel="stylesheet" type="text/css">
 <script type="module">
   import get_names from "./names.js"
   function append_names(el, tag, names) {
@@ -39,13 +13,16 @@
       el.appendChild(np)
     }
   }
-  let paragraph = document.querySelector('p')
   window.addEventListener('load', (e) => {
-    const names = get_names(5)
+    let count = 5
+    const srch = document.location.search.match(/\?count=(\d+)/)
+    if (srch && srch[1]) {  // the (\d+) part
+      count = srch[1]
+    }
+    const names = get_names(count)
     append_names(document.querySelector('ol.boys'), 'li', names['boys'])
     append_names(document.querySelector('ol.girls'), 'li', names['girls'])
    })
-  console.log('what?')
 </script>
 </head>
 <body>
@@ -54,5 +31,10 @@
 <ol class="boys"></ol>
 <ol class="girls"></ol>
 </div>
+<form>
+<label for="count">How many names (each)?</label>
+<input name="count" type="number" value="5"></input>
+<button>Reload</button>
+</form>
 </body>
 </html>
