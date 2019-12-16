@@ -35,3 +35,8 @@ h1,h2,h3{line-height:1.2}
   background-color: #ffaccd;
 }
 
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;  
+}

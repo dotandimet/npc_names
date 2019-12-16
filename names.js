@@ -282,21 +282,23 @@ Emmarie Esperanza Kailyn Aiyana Keilani Austyn Whitley Elina Kimora Maliah
 let exclude = new Set();
 
 function shuffle (array1) {  // inplace shuffle
-  let i = array1.length
-  while (i>0) {
-    let j = Math.floor(Math.random() * i)
-    let temp = array1[i]
-    array1[i] = array1[j]
-    array1[j] = temp
-    i--
+  let n = array1.length
+  while (n) {
+    let i = Math.floor(Math.random() * n--)
+    let temp = array1[n]
+    array1[n] = array1[i]
+    array1[i] = temp
   }
   return array1
 }
 
-function get_names(count=5) {
-  const boys = shuffle(boy_names).slice(0, count)
-  const girls = shuffle(girl_names).slice(0, count)
-  const family = shuffle(surnames).slice(0, (count*2)+1);
+function get_names(count=5, size=1000) {
+  if (size < count*2) {
+    size = (count*2) + 1
+  }
+  const boys = shuffle(boy_names.slice(0, size)).slice(0, count)
+  const girls = shuffle(girl_names.slice(0, size)).slice(0, count)
+  const family = shuffle(surnames.slice(0, size)).slice(0, (count*2)+1);
 
   let output = {}
   output['boys'] = boys.map( (name) => `${name} ${family.shift()}` )

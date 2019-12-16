@@ -15,14 +15,23 @@
   }
   window.addEventListener('load', (e) => {
     let count = 5
-    const srch = document.location.search.match(/\?count=(\d+)/)
+    let size = 1000
+    const srch = document.location.search.match(/count=(\d+)/)
+    const srch2 = document.location.search.match(/size=(\d+)/)
     if (srch && srch[1]) {  // the (\d+) part
-      count = srch[1]
+      count = parseInt(srch[1])
+      document.querySelector('input[name=count]').value = count
     }
-    const names = get_names(count)
+    if (srch2 && srch2[1]) {  // the (\d+) part
+      size = parseInt(srch2[1])
+      document.querySelector('input[name=size]').value = size
+    }
+    const names = get_names(count, size)
     append_names(document.querySelector('ol.boys'), 'li', names['boys'])
     append_names(document.querySelector('ol.girls'), 'li', names['girls'])
    })
+  document.querySelector('input[name=size]').addEventListener('change', (e) => {
+    document.querySelector('output[for=size]').value = e.target.value })
 </script>
 </head>
 <body>
@@ -32,8 +41,21 @@
 <ol class="girls"></ol>
 </div>
 <form>
-<label for="count">How many names (each)?</label>
+<label for="count">How many names (each)?
 <input name="count" type="number" value="5"></input>
+</label>
+<label for="size">Size of pool from which to pick the names?
+<input name="size" type="range" value="1000" min="5" max="1000" step="5" list="steps"></input><output for="size" name="size_val">5</output></label>
+<datalist id="steps">
+<option>10</option>
+<option>20</option>
+<option>50</option>
+<option>100</option>
+<option>200</option>
+<option>500</option>
+<option>750</option>
+<option>1000</option>
+</datalist>
 <button>Reload</button>
 </form>
 </body>
