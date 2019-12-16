@@ -25,13 +25,15 @@
     if (srch2 && srch2[1]) {  // the (\d+) part
       size = parseInt(srch2[1])
       document.querySelector('input[name=size]').value = size
+      document.querySelector('output[for=size]').value = size
     }
     const names = get_names(count, size)
     append_names(document.querySelector('ol.boys'), 'li', names['boys'])
     append_names(document.querySelector('ol.girls'), 'li', names['girls'])
    })
   document.querySelector('input[name=size]').addEventListener('change', (e) => {
-    document.querySelector('output[for=size]').value = e.target.value })
+    document.querySelector('output[for=size]').value = e.target.value
+  })
 </script>
 </head>
 <body>
@@ -45,18 +47,16 @@
 <input name="count" type="number" value="5"></input>
 </label>
 <label for="size">Size of pool from which to pick the names?
-<input name="size" type="range" value="1000" min="5" max="1000" step="5" list="steps"></input><output for="size" name="size_val">5</output></label>
-<datalist id="steps">
-<option>10</option>
-<option>20</option>
-<option>50</option>
-<option>100</option>
-<option>200</option>
-<option>500</option>
-<option>750</option>
-<option>1000</option>
-</datalist>
+<input name="size" type="range" value="1000" min="5" max="1000" step="5"></input><output for="size" name="size_val">5</output></label>
 <button>Reload</button>
 </form>
+<footer>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://names.mongabay.com/most_common_surnames.htm">https://names.mongabay.com/most_common_surnames.htm</a></li>
+<li><a href="https://www.verywellfamily.com/top-1000-baby-girl-names-2757832">https://www.verywellfamily.com/top-1000-baby-girl-names-2757832</a></li>
+<li><a href="https://www.verywellfamily.com/top-1000-baby-boy-names-2757618">https://www.verywellfamily.com/top-1000-baby-boy-names-2757618</a></li>
+</ul>
+</footer>
 </body>
 </html>

@@ -17,7 +17,7 @@ h1,h2,h3{line-height:1.2}
   width: 32rem;
 }
 
-.boys, .girls {
+.boys, .girls, form {
   border: double #666666 1px;
   border-radius: 5px;
   box-shadow: 10px 5px 5px #333333;
@@ -36,7 +36,13 @@ h1,h2,h3{line-height:1.2}
 }
 
 form {
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;  
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 80%;
 }
