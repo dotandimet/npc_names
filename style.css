@@ -1,6 +1,4 @@
 body{
-  margin:40px auto;
-  max-width:650px;
   line-height:1.6;
   font-size:18px;
   color:#444;
@@ -14,18 +12,20 @@ h1,h2,h3{line-height:1.2}
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
-  width: 32rem;
 }
 
 .boys, .girls, form {
   border: double #666666 1px;
   border-radius: 5px;
   box-shadow: 10px 5px 5px #333333;
+  width: 300px;
+  height: 300px;
 }
 
 .boys li, .girls li {
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
+  list-style-position: inside;
 }
 
 .boys {
@@ -36,10 +36,10 @@ h1,h2,h3{line-height:1.2}
 }
 
 form {
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;  
+  padding: 20px;
 }
 
 footer {
